@@ -6,7 +6,7 @@
 	      <div class="panel panel-default">
 	      	<div id="player" class="center-block" ng-show="isCreator()"></div>
 	      </div>
-	      <h3 ng-show="!isCreator()">Now Playing: {{current.title}}</h3>
+	      <h3 class="party" ng-show="!isCreator()">Now Playing: {{current.title}}</h3>
 		    <div class="panel panel-default">
 	      <h4>Opinion</h4>
 		    <progress>
@@ -23,20 +23,16 @@
 		      <span ng-repeat="user in users">{{user}}!  </span>
 	        </div>
 		</div>
-    <div class = 'col-lg-6'>
-      <button ng-if='currentUser.remote === false' id='remote-button' type='button' class='btn btn-info' ng-click='setRemoteUser()'>I want to sing remotely</button>
-    </div>
-    <div class = 'col-lg-6'>
-      <p ng-if='currentUser.remote === true'>Click on the icon to the right of the song to set yourself as the remote singer of that song!</p>
-    </div>
-		<div class="col-lg-3" id = "top" class="queue">
+      <button ng-if="currentUser.remote === false && !isCreator()" id='remote-button' type='button' class='btn btn-info' ng-click='setRemoteUser()'>I want to sing remotely</button> {{currentUser.remote}}
+<!--       <p ng-if='currentUser.remote === true'>Click on the icon to the right of the song to set yourself as the remote singer of that song!</p> -->
+		<div class="col-sm-3" id = "top" class="queue">
 			<div class="party"><h1>Queue</h1></div>
       <div class="scrollable">
 			<ul class="list-unstyled">
 				<li class="queue-item" ng-repeat="video in queue" ng-class="video.status">
 					<button type="button" class="close pull-left" ng-click="removeFromPlaylist(video)" ng-show="isCreator()">&times; </button>
 					{{video.title}}
-          <button type='button' ng-click='setRemoteSong($index)'>Sing</button>
+          <button type='button' ng-if="currentUser.remote === false && !isCreator()" ng-click='setRemoteSong($index)'>Sing</button>
 				</li>
 			</ul>
     </div>
