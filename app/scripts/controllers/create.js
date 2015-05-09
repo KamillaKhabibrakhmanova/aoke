@@ -109,4 +109,14 @@ angular.module('aokeApp')
             $location.path('/room/' + $scope.roomKey);
         }
 
+    $(function() {
+      $("#firstb").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#second").offset().top
+          },
+          'slow');
+      });
+
+    });
+
     });

@@ -118,6 +118,7 @@ body {
 }
 
 #search-results {
+
 }
 
 .result {
@@ -381,4 +382,24 @@ p.copyright {
     height: auto;
     max-height: 200px;
     overflow-x: hidden;
+}
+
+section {
+  position: relative;
+  display: block;
+  height: 100vh;
+}
+
+#first {
+  background-color: #428bca;
+}
+
+#second {
+  background-color: #b5d592;
+}
+
+.jumbotron.container {
+  background-color: transparent;
+  border-bottom: none;
+  margin-bottom: none;
 }

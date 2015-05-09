@@ -1,4 +1,5 @@
-<div id="top" class="container">
+<section id="first" class="create">
+<div id="top" class="container jumbotron">
 	<h1>Create Room</h1>
 <!-- <form name="userForm" ng-submit="save(user)"> -->
 
@@ -7,39 +8,51 @@
 	</div>
 
 	<div class="form-group">
-<textarea class="form-control" ng-model="playlist.description" placeholder="Describe your room!" title="description"></textarea>
-    <button type="submit" class="btn btn-default pull-right" ng-click="createPlaylist()">
+<textarea  class="form-control" ng-model="playlist.description" placeholder="Describe your room!" title="description"></textarea>
+    <button type="button" id="firstb" class="btn btn-default pull-right" ng-click="createPlaylist()">
     Create Playlist
   </button>
-
-
   </div>
+</section>
+
+<section id="second" class="add-vids">
 	<div class="form-group">
 		<div class="center-block" ng-show="!videoId.length">
-			Choose a song to start off your playlist! (required)
+      <div id="top" class="container jumbotron">
+        <h1>Choose a song to start off your playlist!</h1>
 			<div>
-        <form>
-				<input type="text" ng-model="query" />
-				<button type="button" class="btn btn-default" ng-click="search(query)">Search</button>
+        <form><div class="input-group">
+        <div class="row"></div>
+         <textarea style="margin-top: 4px; height: 58px; margin-right: 10px; width: 95%" class="form-control song" ng-model="query" placeholder="What do you want to sing!?"></textarea>
+				<span class="input-group-btn"><button type="button" class="btn btn-default" ng-click="search(query)">Search</button></span>
+        </div>
         </form>
+        </div>
 			</div>
-		</div>
 	</div>
 	<div class="form-group">
-		<div class="col-lg-12" id="search-results">
-			<ul class="unstyled">
-				<li class="result col-lg-3" ng-repeat="result in searchResults">
+		<div class="container" id="search-results">
+				<span ng-repeat="gettingParentIndex in searchResults">
+            <div class="row" ng-if="$index<searchResults.length/4+1">
+                 <span ng-repeat="result in searchResults">
+          <div class="col-sm-3" ng-if="$index>=4*$parent.$index && $index <= 4*($parent.$index+1)-1">
 					<a ng-click="addVideo(result.id.videoId)">
 					<img src="http://img.youtube.com/vi/{{result.id.videoId}}/default.jpg" />
 					<p>{{result.snippet.title}}</p>
           <div class="added-message bg-success" id="{{result.id.videoId}}">Added to playlist</div>
 					</a>
-				</li>
-			</ul>
+            </div>
+          </span>
+        </div>
+				</span>
 		</div>
+    <div class="container text-center">
+    <button  style="font-size: 40px;" type="submit" class="btn btn-default btn-lg" ng-click="createRoom()">
+      Let's Party!
+    </button>
+    </div>
+    </div>
 	</div>
-
-	<button type="submit" class="btn btn-default pull-right" ng-click="createRoom()">
-		Let's Party
-	</button>
+    </div>
 </div>
+</section>
