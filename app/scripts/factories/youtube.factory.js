@@ -3,7 +3,7 @@
 angular.module('aokeApp')
     .factory('YoutubeFactory', ['Auth', '$http', function(Auth, $http) {
         return {
-            search: function(query) {
+            search: function(query, user) {
                 return $http({
                     url: 'https://www.googleapis.com/youtube/v3/search',
                     method: 'GET',
@@ -13,13 +13,13 @@ angular.module('aokeApp')
                         maxResults: 4
                     },
                     headers: {
-                        Authorization: 'Bearer ' + creator.google.accessToken
+                        Authorization: 'Bearer ' + user.google.accessToken
                     }
                 }).then(function(data) {
                     return data.items;
                 })
             },
-            createPlaylist: function(title, description) {
+            createPlaylist: function(title, description, user) {
                 return $http({
                     url: "https://www.googleapis.com/youtube/v3/playlists",
                     method: "POST",
@@ -37,13 +37,13 @@ angular.module('aokeApp')
                         }
                     },
                     headers: {
-                        Authorization: 'Bearer ' + creator.google.accessToken
+                        Authorization: 'Bearer ' + user.google.accessToken
                     }
                 }).then(function(playlist) {
                     return playlist;
                 })
             },
-            addSong: function(videoId, playlist) {
+            addSong: function(videoId, playlist, user) {
                 return $http({
                     url: 'https://www.googleapis.com/youtube/v3/playlistItems',
                     method: 'POST',
@@ -60,7 +60,7 @@ angular.module('aokeApp')
                         }
                     },
                     headers: {
-                        Authorization: 'Bearer ' + creator.google.accessToken
+                        Authorization: 'Bearer ' + user.google.accessToken
                     }
                 }).then(function(data){
                   return data;
