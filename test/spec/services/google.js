@@ -3,7 +3,7 @@
 describe('Service: google', function () {
 
   // load the service's module
-  beforeEach(module('youKaraokeApp'));
+  beforeEach(module('aokeApp'));
 
   // instantiate service
   var google;

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name youKaraokeApp.controller:CreateCtrl
+ * @name aokeApp.controller:CreateCtrl
  * @description
  * # CreateCtrl
- * Controller of the youKaraokeApp
+ * Controller of the aokeApp
  */
- angular.module('youKaraokeApp')
+ angular.module('aokeApp')
  .controller('CreateCtrl', function ($scope, $http, fb, auth, $location, localStorageService) {
  	var creator = auth.getCurrentUser();
  	var api = "AIzaSyDyrtn0sfyk4-FLVyWS1q2uvOiIu__FLMY";

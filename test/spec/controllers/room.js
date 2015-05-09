@@ -3,7 +3,7 @@
 describe('Controller: RoomCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('youKaraokeApp'));
+  beforeEach(module('aokeApp'));
 
   var RoomCtrl,
     scope;

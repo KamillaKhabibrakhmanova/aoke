@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name youKaraokeApp
+ * @name aokeApp
  * @description
- * # youKaraokeApp
+ * # aokeApp
  *
  * Main module of the application.
  */
 angular
-  .module('youKaraokeApp', [
+  .module('aokeApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
