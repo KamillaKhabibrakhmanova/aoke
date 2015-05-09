@@ -72,10 +72,15 @@ angular.module('aokeApp')
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
+       .whenAuthenticated('/createroom', {
+        templateUrl: 'views/create.html',
+        controller: 'CreateCtrl'
+      })
       .whenAuthenticated('/account', {
         templateUrl: 'views/account.html',
         controller: 'AccountCtrl'
       })
+      // .whenAuthenticated('/createroom', {
       .otherwise({redirectTo: '/'});
 
   }])
