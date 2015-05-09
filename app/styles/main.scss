@@ -17,6 +17,21 @@ body {
   padding-bottom: 20px;
 }
 
+@font-face{
+    font-family: lovelo;
+    src: url('../fonts/Lovelo Line Light.otf');
+}
+
+@font-face{
+    font-family: lovelo-bold;
+    src: url('../fonts/Lovelo Line Bold.otf');
+}
+
+@font-face{
+    font-family: lovelo-black;
+    src: url('../fonts/Lovelo Black.otf');
+}
+
 #top{
   padding-top:50px;
 }
@@ -34,8 +49,10 @@ body {
   padding: 0px;
 }
 
+
+
 .header {
-  border-bottom: 1px solid #e5e5e5;
+  border:none;
 
   /* Make the masthead heading the same height as the navigation */
   h3 {
@@ -138,15 +155,13 @@ html {
     height: 100%;
 }
 
-body,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+body {
+  background-color: black;
+}
+
+.navbar {
+  background-color: black;
+  border: none;
 }
 
 .topnav {
@@ -163,20 +178,28 @@ h6 {
     padding-bottom: 50px;
     text-align: center;
     color: #f8f8f8;
-    background: url(../images/karaoke.jpg) no-repeat center center;
+    background-color: black;
     background-size: cover;
 }
 
 .intro-message {
     position: relative;
-    padding-top: 20%;
-    padding-bottom: 20%;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
+
+
 
 .intro-message > h1 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 5em;
+    font-family: lovelo-bold;
+    font-size: 400px;
+    color: #ffd700;
+}
+
+.K {
+  color: #fff;
 }
 
 .intro-divider {
@@ -288,25 +311,60 @@ h6 {
     }
 }
 
-footer {
-    padding: 50px 0;
-    background-color: #f8f8f8;
+.footer {
+    padding: 0;
+    border: none;
+}
+
+.btn {
+    padding: 12px 24px;
+    margin: 5px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.btn:focus, .btn:active:focus, .btn.active:focus {
+    outline: 0 none;
+}
+
+.btn-primary {
+    background: #ffd700;
+    color: #000;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    background: #ffd700;
+}
+.btn-primary:active, .btn-primary.active {
+    background: #007299;
+    box-shadow: none;
+}
+
+.btn.outline {
+  border-radius: 0;
+    background: none;
+    padding: 12px 22px;
+    margin: 1px;
+    font-size: 16px;
+}
+.btn-primary.outline {
+    border: 2px solid #fff;
+    color: #fff;
+}
+.btn-primary.outline:hover, .btn-primary.outline:focus, .btn-primary.outline:active, .btn-primary.outline.active, .open > .dropdown-toggle.btn-primary {
+    color: #ffd700;
+    border-color: #ffd700;
+}
+.btn-primary.outline:active, .btn-primary.outline.active {
+    border-color: #ffd700;
+    color: #ffd700;
+    box-shadow: none;
 }
 
 p.copyright {
     margin: 15px 0 0;
 }
 
-.jumbotron {
-  background: url(../images/disco.jpg) no-repeat center center;
-  background-position: 0% 13%;
-  background-size: cover;
-  color: #fff;
-}
-
-.jumbotron-padding {
-  padding: 100px 0;
-}
 
 .content {
   width: 50%;
