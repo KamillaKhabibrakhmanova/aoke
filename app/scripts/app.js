@@ -2,13 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name aokeApp
+ * @name youKaraokeApp
  * @description
- * # aokeApp
+ * # youKaraokeApp
  *
  * Main module of the application.
  */
-angular.module('aokeApp', [
+angular
+  .module('youKaraokeApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -16,7 +17,27 @@ angular.module('aokeApp', [
     'ngSanitize',
     'ngTouch',
     'firebase',
-    'firebase.ref',
-    'firebase.auth',
-    'ui.router'
-  ]);
+    'LocalStorageModule',
+    'ui.bootstrap'
+  ])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: '../views/main.html',
+        controller: 'MainCtrl'
+      })
+      .when('/about', {
+        templateUrl: '../views/about.html'
+      })
+      .when('/create', {
+        templateUrl: '../views/create.html',
+        controller: 'CreateCtrl'
+      })
+      .when('/room/:id', {
+        templateUrl:'../views/room.html',
+        controller: 'RoomCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  });

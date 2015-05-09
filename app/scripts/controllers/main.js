@@ -2,37 +2,33 @@
 
 /**
  * @ngdoc function
- * @name aokeApp.controller:MainCtrl
+ * @name youKaraokeApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the aokeApp
+ * Controller of the youKaraokeApp
  */
-angular.module('aokeApp')
-  .controller('MainCtrl', function ($scope, Auth, $location, $q, Ref, $firebaseObject) {
+ angular.module('youKaraokeApp')
+ .controller('MainCtrl', function ($scope, $location, fb, auth) {
 
-
-    $scope.oauthLogin = function(provider, authData) {
-    	console.log('authData', authData);
-      $scope.err = null;
-      Auth.$authWithOAuthPopup(provider, {
-      	rememberMe: true, 
-      	scope: 'https://www.googleapis.com/auth/youtube'
-      })
-      .then(redirect, showError);
-    };
-
-    // $scope.user = user;
-
-    // $scope.logout = function() { Auth.$unauth(); };
-
-    // var profile = $firebaseObject(Ref.child('users/'+user.uid));
-    // profile.$bindTo($scope, 'profile');
-
-    function redirect() {
-    	$location.path('/account')
-    }
-
-     function showError(err) {
-      $scope.err = err;
-    }
-  });
+ 	$scope.login = function(){
+ 		fb.ref.authWithOAuthPopup("google", function(error, authData) {
+ 			if (error) {
+ 				console.log("Login Failed!", error);
+ 			} else {
+ 				console.log("Authenticated successfully with payload:", authData);
+ 				auth.setCurrentUser(authData);
+ 				if(localStorage["ls.lastsite"]){
+ 					$location.path('/room/'+localStorage["ls.lastsite"]);
+ 					$scope.$apply();
+ 				}
+ 				else{
+ 					$location.path('/create');
+ 					$scope.$apply();
+ 				}
+ 			}
+ 		},{
+ 			scope: "https://www.googleapis.com/auth/youtube, https://www.googleapis.com/auth/plus.login"
+ 		});
+ 	}	
+ 	console.log(localStorage["ls.lastsite"]);
+});
