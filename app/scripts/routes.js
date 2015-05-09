@@ -56,6 +56,7 @@ angular.module('aokeApp')
   // configure views; whenAuthenticated adds a resolve method to ensure users authenticate
   // before trying to access that route
   .config(['$routeProvider','$locationProvider', function($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode(true);
 
     $routeProvider
       .when('/', {
