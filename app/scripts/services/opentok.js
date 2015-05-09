@@ -1,7 +1,7 @@
 'use strict';
 
  angular.module('aokeApp')
- .factory('OpenTok', function () {
+ .factory('OpenTok', function ($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     return {

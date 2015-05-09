@@ -41,10 +41,21 @@ angular.module('aokeApp')
 
         $scope.setRemoteUser = function() {
           $scope.currentUser.remote = true;
-          if ($scope.videoSession !== null) {
-            OpenTok.createNewSession().then(function(err, session) {
+          if ($scope.videoSession === null) {
+            OpenTok.createNewSession().then(function(session) {
+              console.log(session);
+              $scope.videoSession = session.data;
+            })
+          }
+        }
+
+        $scope.setRemoteSong = function() {
+          if ($scope.currentUser.remote_songs.length > 0) {
+            $scope.currentUser.remote_songs.push(video);
+          } else {
+            OpenTok.newPublisherToken($scope.videoSession).then(function(err, token) {
               if(err) console.log(err);
-              $scope.videoSession = session;
+              $scope.currentUser.videotoken = token;
             })
           }
         }
