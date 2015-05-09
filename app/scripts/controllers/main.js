@@ -8,8 +8,11 @@
  * Controller of the aokeApp
  */
 angular.module('aokeApp')
-  .controller('MainCtrl', function ($scope, Auth, $location, $q, Ref) {
-    $scope.oauthLogin = function(provider) {
+  .controller('MainCtrl', function ($scope, Auth, $location, $q, Ref, $firebaseObject) {
+
+
+    $scope.oauthLogin = function(provider, authData) {
+    	console.log('authData', authData);
       $scope.err = null;
       Auth.$authWithOAuthPopup(provider, {
       	rememberMe: true, 
@@ -18,7 +21,18 @@ angular.module('aokeApp')
       .then(redirect, showError);
     };
 
+    // $scope.user = user;
+
+    // $scope.logout = function() { Auth.$unauth(); };
+
+    // var profile = $firebaseObject(Ref.child('users/'+user.uid));
+    // profile.$bindTo($scope, 'profile');
+
     function redirect() {
-    	$location.path('/create')
+    	$location.path('/account')
+    }
+
+     function showError(err) {
+      $scope.err = err;
     }
   });
