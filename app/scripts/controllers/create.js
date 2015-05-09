@@ -7,7 +7,7 @@
  * Manages authentication to any active providers.
  */
 angular.module('aokeApp')
-  .controller('RoomCtrl', function ($scope, Auth, $location, $q, Ref, $timeout) {
+  .controller('CreateCtrl', function ($scope, Auth, $location, $q, Ref, $timeout) {
 
     $scope.addVideo = function(videoId) {
       $scope.video = videoId;
