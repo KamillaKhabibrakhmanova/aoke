@@ -21,7 +21,7 @@ angular.module('aokeApp')
 
             $scope.creator = dataSnapshot.val();
 
-            if ($scope.isCreator()) {
+            if ($scope.isCreator() || $scope.currentUser.remote) {
 
                 var tag = document.createElement('script');
                 tag.src = "https://www.youtube.com/iframe_api";
@@ -131,7 +131,7 @@ angular.module('aokeApp')
                             status: 'non'
                         }
                     });
-                    if($scope.isCreator()) {
+                    if($scope.isCreator() || $scope.currentUser.remote) {
                         $scope.queue[0].status = 'current';
                         currentRef.set({
                             title: $scope.queue[0].title,
@@ -167,7 +167,7 @@ angular.module('aokeApp')
 
         videosRef.on('child_added', function(dataSnapshot) {
             // console.log("Videos been added ", dataSnapshot.val());
-            if ($scope.isCreator()) {
+            if ($scope.isCreator() || $scope.currentUser.remote) {
                 $scope.player.addEventListener('onStateChange', reloadWhenDone);
             }
 
@@ -192,7 +192,7 @@ angular.module('aokeApp')
                         status: 'non'
                     }
                 });
-                if ($scope.isCreator()) $scope.queue[$scope.player.getPlaylistIndex()].status = 'current';
+                if ($scope.isCreator()|| $scope.currentUser.remote) $scope.queue[$scope.player.getPlaylistIndex()].status = 'current';
             });
         });
 
@@ -219,7 +219,7 @@ angular.module('aokeApp')
                         status: 'non'
                     }
                 });
-                if ($scope.isCreator()) $scope.queue[$scope.player.playlistIndex()].status = 'current';
+                if ($scope.isCreator() || $scope.currentUser.remote) $scope.queue[$scope.player.playlistIndex()].status = 'current';
             });
 		});
 
