@@ -18,7 +18,8 @@ angular
     'ngTouch',
     'firebase',
     'LocalStorageModule',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'opentok'
   ])
   .config(function ($routeProvider) {
 

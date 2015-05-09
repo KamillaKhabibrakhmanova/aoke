@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('aokeApp')
-    .controller('RoomCtrl', function($scope, $http, auth, localStorageService, $routeParams, $location, fb, $firebase, OpenTok) {
+    .controller('RoomCtrl', function($scope, $http, auth, localStorageService, $routeParams, $location, fb, $firebase, OpenTok, OTSession, apiKey) {
         localStorageService.set("lastsite", $routeParams.id);
         if (!auth.getCurrentUser()) {
             $location.path('/main');
@@ -44,21 +44,20 @@ angular.module('aokeApp')
           $scope.currentUser.remote_songs = [];
           if ($scope.videoSession === null) {
             OpenTok.createNewSession().then(function(session) {
-              console.log(session);
               $scope.videoSession = session.data;
             })
           }
         }
 
-        $scope.setRemoteSong = function() {
-          if ($scope.currentUser.remote_songs.length > 0) {
-            $scope.currentUser.remote_songs.push(video);
-          } else {
-            OpenTok.newPublisherToken($scope.videoSession).then(function(err, token) {
-              if(err) console.log(err);
-              $scope.currentUser.videotoken = token;
-            })
-          }
+        $scope.setRemoteSong = function(index) {
+          OpenTok.newPublisherToken($scope.videoSession).then(function(token){
+            $scope.queue[index].remoteToken = token;
+            OTSession.init(apiKey, $scope.videoSession, token, function(err, session) {
+              //PUT SOMETHING IN FIREBASE?
+            });
+          $scope.streams = OTSession.streams;
+          })
+
         }
 
 

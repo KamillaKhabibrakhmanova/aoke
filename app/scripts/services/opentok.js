@@ -1,6 +1,10 @@
 'use strict';
 
  angular.module('aokeApp')
+   .value({
+    apiKey:'45232972'
+  })
+
  .factory('OpenTok', function ($http) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
