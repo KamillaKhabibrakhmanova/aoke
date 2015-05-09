@@ -4,5 +4,6 @@
 
     .factory('Auth', function($firebaseAuth, Ref) {
       return $firebaseAuth(Ref);
+
     });
 })();

@@ -9,7 +9,8 @@
  */
 angular.module('aokeApp')
   .controller('MainCtrl', function ($scope, Auth, $location, $q, Ref) {
-    $scope.oauthLogin = function(provider) {
+    $scope.oauthLogin = function(provider, authData) {
+    	console.log('authData', authData);
       $scope.err = null;
       Auth.$authWithOAuthPopup(provider, {
       	rememberMe: true, 
@@ -20,5 +21,9 @@ angular.module('aokeApp')
 
     function redirect() {
     	$location.path('/create')
+    }
+
+     function showError(err) {
+      $scope.err = err;
     }
   });
