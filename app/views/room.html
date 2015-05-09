@@ -33,8 +33,7 @@
 				<li class="queue-item" ng-repeat="video in queue" ng-class="video.status">
 					<button type="button" class="close pull-left" ng-click="removeFromPlaylist(video)" ng-show="isCreator()">&times; </button>
 					{{video.title}}
-          <span ng-click='setRemoteSong(video)'>
-          <i class="fa fa-user-plus"></i></span>
+          <button type='button' ng-click='setRemoteSong(video)'>Sing</button>
 				</li>
 			</ul>
     </div>

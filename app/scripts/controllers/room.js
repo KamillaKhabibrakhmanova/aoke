@@ -41,6 +41,7 @@ angular.module('aokeApp')
 
         $scope.setRemoteUser = function() {
           $scope.currentUser.remote = true;
+          $scope.currentUser.remote_songs = [];
           if ($scope.videoSession === null) {
             OpenTok.createNewSession().then(function(session) {
               console.log(session);
