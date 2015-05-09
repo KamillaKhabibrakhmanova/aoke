@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('aokeApp')
-    .controller('RoomCtrl', function($scope, $http, auth, localStorageService, $routeParams, $location, fb, $firebase) {
+    .controller('RoomCtrl', function($scope, $http, auth, localStorageService, $routeParams, $location, fb, $firebase, OpenTok) {
         localStorageService.set("lastsite", $routeParams.id);
         if (!auth.getCurrentUser()) {
             $location.path('/main');
@@ -10,7 +10,9 @@ angular.module('aokeApp')
             localStorageService.remove('lastsite');
         }
         $scope.currentUser = auth.getCurrentUser();
+        $scope.currentUser.remote = false;
         $scope.users = [];
+        $scope.videoSession = null;
         // $scope.queueIndex = 0; // nothing i do makes any sense i'm so sorry
 
         //CREATOR
@@ -36,6 +38,16 @@ angular.module('aokeApp')
             }
 
         })
+
+        $scope.setRemoteUser = function() {
+          $scope.currentUser.remote = true;
+          if ($scope.videoSession !== null) {
+            OpenTok.createNewSession().then(function(err, session) {
+              if(err) console.log(err);
+              $scope.videoSession = session;
+            })
+          }
+        }
 
 
         $scope.isCreator = function() {

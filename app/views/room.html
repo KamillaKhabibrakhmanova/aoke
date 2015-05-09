@@ -20,6 +20,12 @@
 		      <span ng-repeat="user in users">{{user}}!  </span>
 	        </div>
 		</div>
+    <div class = 'col-lg-6'>
+      <button ng-if='currentUser.remote === false' id='remote-button' type='button' class='btn btn-info' ng-click='setRemoteUser()'>I want to sing remotely</button>
+    </div>
+    <div class = 'col-lg-6'>
+      <p ng-if='currentUser.remote === true'>Click on the icon to the right of the song to set yourself as the remote singer of that song!</p>
+    </div>
 		<div class="col-lg-3" id = "top" class="queue">
 			<h4>Queue</h4>
       <div class="scrollable">
@@ -27,6 +33,7 @@
 				<li class="queue-item" ng-repeat="video in queue" ng-class="video.status">
 					<button type="button" class="close pull-left" ng-click="removeFromPlaylist(video)" ng-show="isCreator()">&times; </button>
 					{{video.title}}
+          <span ng-show='currentUser.remote === true'></span>
 				</li>
 			</ul>
     </div>
