@@ -33,7 +33,7 @@ body {
 }
 
 #top{
-  padding-top:50px;
+  padding-top:10px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -159,10 +159,6 @@ body {
   background-color: black;
 }
 
-.navbar {
-  background-color: black;
-  border: none;
-}
 
 .topnav {
     font-size: 14px;
@@ -334,8 +330,18 @@ body {
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
     background: #ffd700;
 }
+
+.btn-downvote {
+  background: #000;
+  color: #fff;
+}
+
+.btn-downvote:hover, .btn-downvote.active, .btn-downvote.focus {
+  background: #000;
+}
+
 .btn-primary:active, .btn-primary.active {
-    background: #007299;
+    background: #ffd700;
     box-shadow: none;
 }
 
@@ -372,13 +378,28 @@ p.copyright {
 .row {
   margin-right: 0;
 }
+
+.party {
+  font-family: lovelo-black;
+  color: #ffd700;
+}
+
+.creator {
+  font-family: lovelo-black;
+  color: #fff;
+}
 .scrollable {
     height: auto;
     max-height: 500px;
     overflow-x: hidden;
+    background-color: #fff;
+    padding: 10px;
 }
 .scrollable-width {
     height: auto;
     max-height: 200px;
     overflow-x: hidden;
 }
+
+
+

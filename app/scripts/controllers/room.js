@@ -251,7 +251,7 @@ angular.module('aokeApp')
                     iv_load_policy: 3
                 },
                 height: '480',
-                width: '853',
+                width: '800',
                 events: {
                     'onReady': onPlayerReady,
                     'onStateChange': onPlayerStateChange
