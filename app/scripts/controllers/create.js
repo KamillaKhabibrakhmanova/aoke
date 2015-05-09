@@ -2,17 +2,17 @@
 
 /**
  * @ngdoc function
- * @name youKaraokeApp.controller:CreateCtrl
+ * @name aokeApp.controller:CreateCtrl
  * @description
  * # CreateCtrl
- * Controller of the youKaraokeApp
+ * Controller of the aokeApp
  */
- angular.module('youKaraokeApp')
+ angular.module('aokeApp')
  .controller('CreateCtrl', function ($scope, $http, fb, auth, $location, localStorageService) {
  	var creator = auth.getCurrentUser();
  	var api = "AIzaSyABJumn6ZK-Ru4vt1U0hq7wQA99Z6EhXLE";
  	var oAuth = "900189317018-kphukaabv9r3sljqf6hunvfg91s7ihir.apps.googleusercontent.com";
- 	
+
  	$scope.videoId = "";
  	$scope.searchResults = [];
  	$scope.room = {

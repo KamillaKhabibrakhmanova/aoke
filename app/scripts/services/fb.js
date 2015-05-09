@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name youKaraokeApp.fb
+ * @name aokeApp.fb
  * @description
  * # fb
- * Factory in the youKaraokeApp.
+ * Factory in the aokeApp.
  */
-angular.module('youKaraokeApp')
+angular.module('aokeApp')
   .factory('fb', function ($firebase) {
     var ref = new Firebase("https://aoke.firebaseio.com/");
 

@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc service
- * @name youKaraokeApp.auth
+ * @name aokeApp.auth
  * @description
  * # auth
- * Service in the youKaraokeApp.
+ * Service in the aokeApp.
  */
-angular.module('youKaraokeApp')
-    // AngularJS will instantiate a singleton by calling "new" on this 
+angular.module('aokeApp')
+    // AngularJS will instantiate a singleton by calling "new" on this
 .factory('auth', function(localStorageService){
 
 	var CurrentUser;
@@ -26,6 +26,6 @@ angular.module('youKaraokeApp')
     	CurrentUser = localStorageService.get('user');
     	return CurrentUser;
     }
-    
+
 	}
 })

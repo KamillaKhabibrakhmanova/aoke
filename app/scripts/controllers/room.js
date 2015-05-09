@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('youKaraokeApp')
+angular.module('aokeApp')
     .controller('RoomCtrl', function($scope, $http, auth, localStorageService, $routeParams, $location, fb, $firebase) {
         localStorageService.set("lastsite", $routeParams.id);
         if (!auth.getCurrentUser()) {

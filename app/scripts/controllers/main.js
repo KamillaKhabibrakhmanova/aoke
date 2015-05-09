@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name youKaraokeApp.controller:MainCtrl
+ * @name aokeApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the youKaraokeApp
+ * Controller of the aokeApp
  */
- angular.module('youKaraokeApp')
+ angular.module('aokeApp')
  .controller('MainCtrl', function ($scope, $location, fb, auth) {
 
  	$scope.login = function(){
@@ -29,6 +29,6 @@
  		},{
  			scope: "https://www.googleapis.com/auth/youtube, https://www.googleapis.com/auth/plus.login"
  		});
- 	}	
+ 	}
  	console.log(localStorage["ls.lastsite"]);
 });
