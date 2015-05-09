@@ -1,8 +1,11 @@
 <div class="container">
 	<div class="row">
 		<div class="col-lg-9" id ="top">
-			Creator of this Awesome Party: {{creator.google.displayName}}
-	      <div id="player" class="jumbotron" class="center-block" ng-show="isCreator()"></div>
+			<div class="party"><h1>Party: {{playlist[0].snippet.title}}</h1></div>
+			<div class="creator"><h4>Creator of this Awesome Party: {{creator.google.displayName}}</h4></div>
+	      <div class="panel panel-default">
+	      	<div id="player" class="center-block" ng-show="isCreator()"></div>
+	      </div>
 	      <h3 ng-show="!isCreator()">Now Playing: {{current.title}}</h3>
 		    <div class="panel panel-default">
 	      <h4>Opinion</h4>
@@ -12,28 +15,35 @@
 		    	</bar>
 		    </progress>
 		    	<h4>Give some feedback</h4>
-		    	<button type="button" class="btn btn-info" ng-click="increment(2)">Woo!</button>
-		    	<button type="button" class="btn btn-danger" ng-click="increment(-2)">Boo!</button>
+		    	<button type="button" class="btn btn-primary btn-lg btn-upvote" ng-click="increment(2)">Woo!</button>
+		    	<button type="button" class="btn btn-primary btn-lg btn-downvote" ng-click="increment(-2)">Boo!</button>
 		    </div>
 		    <div class="panel panel-default">
 		      <h4>People Partying:</h4>
 		      <span ng-repeat="user in users">{{user}}!  </span>
 	        </div>
 		</div>
+    <div class = 'col-lg-6'>
+      <button ng-if='currentUser.remote === false' id='remote-button' type='button' class='btn btn-info' ng-click='setRemoteUser()'>I want to sing remotely</button>
+    </div>
+    <div class = 'col-lg-6'>
+      <p ng-if='currentUser.remote === true'>Click on the icon to the right of the song to set yourself as the remote singer of that song!</p>
+    </div>
 		<div class="col-lg-3" id = "top" class="queue">
-			<h4>Queue</h4>
+			<div class="party"><h1>Queue</h1></div>
       <div class="scrollable">
 			<ul class="list-unstyled">
 				<li class="queue-item" ng-repeat="video in queue" ng-class="video.status">
 					<button type="button" class="close pull-left" ng-click="removeFromPlaylist(video)" ng-show="isCreator()">&times; </button>
 					{{video.title}}
+          <button type='button' ng-click='setRemoteSong($index)'>Sing</button>
 				</li>
 			</ul>
     </div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-lg-9">
 			<div class="panel panel-info">
 				<div class="panel-heading"><h4>Search for more additions to the playlist</h4></div>
 				<form class="form-inline search" id="center" ng-submit="search(query)">
