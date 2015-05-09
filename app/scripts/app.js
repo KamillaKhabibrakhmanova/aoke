@@ -17,5 +17,6 @@ angular.module('aokeApp', [
     'ngTouch',
     'firebase',
     'firebase.ref',
-    'firebase.auth'
+    'firebase.auth',
+    'ui.router'
   ]);
