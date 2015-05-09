@@ -10,9 +10,8 @@
  angular.module('youKaraokeApp')
  .controller('CreateCtrl', function ($scope, $http, fb, auth, $location, localStorageService) {
  	var creator = auth.getCurrentUser();
- 	var api = "AIzaSyABJumn6ZK-Ru4vt1U0hq7wQA99Z6EhXLE";
- 	var oAuth = "900189317018-kphukaabv9r3sljqf6hunvfg91s7ihir.apps.googleusercontent.com";
- 	
+ 	var api = "AIzaSyDyrtn0sfyk4-FLVyWS1q2uvOiIu__FLMY";
+
  	$scope.videoId = "";
  	$scope.searchResults = [];
  	$scope.room = {
@@ -22,7 +21,7 @@
  		videos: []
  	}
 
- 	console.log(creator);
+ 	console.log('creator', creator);
  	$scope.room.users.push(creator);
 
  	$scope.search = function(query) {
