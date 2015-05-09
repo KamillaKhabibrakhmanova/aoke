@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('aokeApp')
-    .controller('RoomCtrl', function($scope, $http, auth, localStorageService, $routeParams, $location, fb, $firebase, OpenTok, OTSession, apiKey) {
+    .controller('RoomCtrl', function($scope, $http, auth, localStorageService, $routeParams, $location, fb, $firebase, /*OpenTok, OTSession,*/ apiKey) {
         localStorageService.set("lastsite", $routeParams.id);
         if (!auth.getCurrentUser()) {
             $location.path('/main');
