@@ -318,6 +318,7 @@ body {
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
+    font-family: 'lovelo-black';
 }
 
 .btn:focus, .btn:active:focus, .btn.active:focus {
@@ -381,12 +382,12 @@ p.copyright {
 }
 
 .party {
-  font-family: 'lovelo';
+  font-family: 'lovelo-black';
   color: #ffd700;
 }
 
 .creator {
-  font-family: 'lovelo';
+  font-family: 'lovelo-black';
   color: #fff;
 }
 .scrollable {
@@ -417,8 +418,13 @@ section {
 }
 
 .songs {
-  font-family: 'love-lo';
+  font-family: 'lovelo-black';
   color: #000;
+}
+
+.queue {
+  font-family: 'lovelo';
+  color: #ffd700;  
 }
 
 .jumbotron.container {
