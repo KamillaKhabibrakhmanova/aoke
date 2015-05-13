@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('aokeApp')
-    .controller('RoomCtrl', function($scope, $http, auth, localStorageService, $routeParams, $location, fb, $firebase, /*OpenTok, OTSession,*/ apiKey) {
+    .controller('RoomCtrl', function($scope, $http, auth, localStorageService, $routeParams, $location, fb, $firebase) {
         localStorageService.set("lastsite", $routeParams.id);
         if (!auth.getCurrentUser()) {
             $location.path('/main');
@@ -39,26 +39,26 @@ angular.module('aokeApp')
 
         })
 
-        $scope.setRemoteUser = function() {
-          $scope.currentUser.remote = true;
-          $scope.currentUser.remote_songs = [];
-          if ($scope.videoSession === null) {
-            OpenTok.createNewSession().then(function(session) {
-              $scope.videoSession = session.data;
-            })
-          }
-        }
+        // $scope.setRemoteUser = function() {
+        //   $scope.currentUser.remote = true;
+        //   $scope.currentUser.remote_songs = [];
+        //   if ($scope.videoSession === null) {
+        //     OpenTok.createNewSession().then(function(session) {
+        //       $scope.videoSession = session.data;
+        //     })
+        //   }
+        // }
 
-        $scope.setRemoteSong = function(index) {
-          OpenTok.newPublisherToken($scope.videoSession).then(function(token){
-            $scope.queue[index].remoteToken = token;
-            OTSession.init(apiKey, $scope.videoSession, token, function(err, session) {
-              //PUT SOMETHING IN FIREBASE?
-            });
-          $scope.streams = OTSession.streams;
-          })
+        // $scope.setRemoteSong = function(index) {
+        //   OpenTok.newPublisherToken($scope.videoSession).then(function(token){
+        //     $scope.queue[index].remoteToken = token;
+        //     OTSession.init(apiKey, $scope.videoSession, token, function(err, session) {
+        //       //PUT SOMETHING IN FIREBASE?
+        //     });
+        //   $scope.streams = OTSession.streams;
+        //   })
 
-        }
+        // }
 
 
         $scope.isCreator = function() {

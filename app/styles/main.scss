@@ -19,17 +19,17 @@ body {
 
 @font-face{
     font-family: lovelo;
-    src: url('Lovelo Line Light.otf')
+    src: url('../fonts/LoveloLineLight.otf')
 }
 
 @font-face{
     font-family: lovelo-bold;
-    src: url('Lovelo Line Bold.otf');
+    src: url('../fonts/LoveloLineBold.otf');
 }
 
 @font-face{
     font-family: lovelo-black;
-    src: url('Lovelo Black.otf');
+    src: url('../fonts/LoveloBlack.otf');
 }
 
 #top{
@@ -188,7 +188,7 @@ body {
 .intro-message > h1 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-family: lovelo-bold;
+    font-family: 'lovelo-bold';
     font-size: 400px;
     color: #ffd700;
 }
@@ -381,12 +381,12 @@ p.copyright {
 }
 
 .party {
-  font-family: lovelo-black;
+  font-family: 'lovelo';
   color: #ffd700;
 }
 
 .creator {
-  font-family: lovelo-black;
+  font-family: 'lovelo';
   color: #fff;
 }
 .scrollable {
@@ -417,7 +417,7 @@ section {
 }
 
 .songs {
-  font-family: lovelo-black;
+  font-family: 'love-lo';
   color: #000;
 }
 
