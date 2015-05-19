@@ -1,25 +1,33 @@
-<section id="first" class="create">
+<section id="first" class="create" ng-hide="playlistCreated">
 <div id="top" class="container jumbotron">
 	<div class="party"><h1>Create Room</h1></div>
 <!-- <form name="userForm" ng-submit="save(user)"> -->
-
-	<div class="form-group">
-		<input class="form-control" ng-model="playlist.title" placeholder="Title">
+<form name="createList" ng-submit="createPlaylist(isValid)" novalidate>
+	
+  <div class="form-group">
+		<input class="form-control" name="title" ng-model="playlist.title" placeholder="Title" required>
+    <p ng-show="createList.title.$invalid && !createList.title.$pristine" class="help-block">You need a title</p>
 	</div>
 
 	<div class="form-group">
-<textarea  class="form-control" ng-model="playlist.description" placeholder="Describe your room!" title="description"></textarea>
-    <button type="button" id="firstb" class="btn btn-default pull-right" ng-click="createPlaylist()">
+    <textarea  class="form-control" name="description" ng-model="playlist.description" placeholder="Describe your room!" title="description" required></textarea>
+
+    <p ng-show="createList.description.$invalid && !createList.description.$pristine" class="help-block">You need a description</p>
+    
+    <button type="submit" id="firstb" class="btn btn-default pull-right" ng-disabled="createList.$invalid">
     Create Playlist
-  </button>
+    </button>
   </div>
+
+</form>
 </section>
 
-<section id="second" class="add-vids">
+<section id="second" class="add-vids" ng-show="playlistCreated">
 	<div class="form-group">
 		<div class="center-block" ng-show="!videoId.length">
-      <div id="top" class="container jumbotron">
+      <div id="top" class="container playlist">
         <div class="songs"><h1>Choose a song to start off your playlist!</h1></div>
+        <h2>Your playlist: {{playlist.snippet.title}}</h2>
 			<div>
         <form><div class="input-group">
         <div class="row"></div>
@@ -32,10 +40,12 @@
 	</div>
 	<div class="form-group">
 		<div class="container" id="search-results">
-				<span ng-repeat="gettingParentIndex in searchResults">
-            <div class="row" ng-if="$index<searchResults.length/4+1">
+				<div class="row">
+        <div class="col-lg-9">
+          <span ng-repeat="gettingParentIndex in searchResults">
+            <div class="row" ng-if="$index<searchResults.length/3+1">
                  <span ng-repeat="result in searchResults">
-          <div class="col-sm-3" ng-if="$index>=4*$parent.$index && $index <= 4*($parent.$index+1)-1">
+          <div class="col-sm-4" ng-if="$index>=3*$parent.$index && $index <= 3*($parent.$index+1)-1">
 					<a ng-click="addVideo(result.id.videoId)">
 					<img src="http://img.youtube.com/vi/{{result.id.videoId}}/default.jpg" />
 					<p>{{result.snippet.title}}</p>
@@ -45,6 +55,19 @@
           </span>
         </div>
 				</span>
+        </div>
+
+
+      <div class="col-lg-3">
+        <div class="panel panel-default">
+          <div class="playlist-heading">Current Playlist</div>
+          <div class="panel-body" ng-repeat="video in addedVideos">
+            <li>{{ video.snippet.title }}</li>
+          </div>
+        </div>
+      </div>
+
+        </div>
 		</div>
     <div class="container text-center">
     <button  style="font-size: 40px;" type="submit" class="btn btn-default btn-lg" ng-click="createRoom()">
