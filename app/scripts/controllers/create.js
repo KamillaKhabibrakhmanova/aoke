@@ -21,6 +21,8 @@ angular.module('aokeApp')
             videos: []
         }
 
+        $scope.playlistCreated = false;
+        $scope.addedVideos = [];
         console.log('creator', creator);
         $scope.room.users.push(creator);
 
@@ -31,7 +33,7 @@ angular.module('aokeApp')
                     params: {
                         part: 'snippet',
                         q: 'karaoke ' + query,
-                        maxResults: 12
+                        maxResults: 9
                     },
                     headers: {
                         Authorization: 'Bearer ' + creator.google.accessToken
@@ -47,7 +49,13 @@ angular.module('aokeApp')
             angular.element('#search-results').css({display: 'none'});
           }*/
 
-        $scope.createPlaylist = function() {
+        $scope.createPlaylist = function(isValid) {
+
+            $scope.playlistCreated = true;
+            if(isValid) {
+                console.log('Form is valid')
+            };
+
             $http({
                     url: "https://www.googleapis.com/youtube/v3/playlists",
                     method: "POST",
@@ -78,6 +86,8 @@ angular.module('aokeApp')
         }
 
         $scope.addVideo = function(videoId) {
+            
+
             $http({
                     url: 'https://www.googleapis.com/youtube/v3/playlistItems',
                     method: 'POST',
@@ -97,10 +107,12 @@ angular.module('aokeApp')
                         Authorization: 'Bearer ' + creator.google.accessToken
                     }
                 })
-                .success(function() {
+                .success(function(video) {
                     angular.element('#' + videoId).css({
                         display: 'block'
                     });
+                    $scope.addedVideos.push(video);
+                    console.log('added videos', $scope.addedVideos )
                 });
         }
 
